@@ -22,27 +22,45 @@
     --radius: 18px;
   }
 
-  .titulo {
-    display: flex;
-    align-items: center;       /* centraliza verticalmente */
-    justify-content: center;   /* centraliza horizontalmente */
-    gap: 15px;                 /* espaço entre imagem e texto */
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 26px;
-    font-weight: bold;
-  }
+ .titulo {
+  display: flex;
+  flex-direction: column; /* no celular: um embaixo do outro */
+  align-items: center;
+  justify-content: center;
 
- 
-  .titulo img {
- width: 40px;     /* ajuste o tamanho do gif aqui */
-    height: 40px;
+  text-align: center;
+  gap: 12px;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* GIF */
+.titulo img {
+  width: 55px;
+  height: 55px;
   object-fit: contain;
   transition: transform 0.25s ease;
 }
 
 .titulo img:hover {
-  transform: translateY(-6px); /* sobe um pouquinho */
+  transform: translateY(-6px);
+}
+
+/* --- Versão para telas maiores (tablet/PC) --- */
+@media (min-width: 600px) {
+  .titulo {
+    flex-direction: row; /* lado a lado */
+    gap: 15px;
+  }
+
+  .titulo img {
+    width: 40px; /* volta ao tamanho PC */
+    height: 40px;
+  }
 }
 
 
