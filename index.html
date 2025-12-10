@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<div class="titulo">
+  <span>.ೃ࿐ Meu Acervo de Wallpapers</span>
+    <img src="fofinho.gif" alt="Logo Cindy">
+</div>
+
+<style>
+  /* --- Estilo Clean & Futurista --- */
+  :root {
+    --bg: #f7f7f7;
+    --text: #1a1a1a;
+    --card-bg: #ffffff;
+    --shadow: rgba(0,0,0,0.06);
+    --accent: #dcdcdc;
+    --radius: 18px;
+  }
+
+  .titulo {
+    display: flex;
+    align-items: center;       /* centraliza verticalmente */
+    justify-content: center;   /* centraliza horizontalmente */
+    gap: 15px;                 /* espaço entre imagem e texto */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+  }
+
+ 
+  .titulo img {
+ width: 40px;     /* ajuste o tamanho do gif aqui */
+    height: 40px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.titulo img:hover {
+  transform: translateY(-6px); /* sobe um pouquinho */
+}
+
+
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    header h1 {
+      letter-spacing: -1px;
+      font-size: 2.3rem;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    /* --- Galeria --- */
+    .gallery {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .item {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 15px var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .item img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .texto1{
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 1px 15px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: var(--radius);
+    }
+  </style>
+</head>
+<body>
+ 
+
+  <div class=" texto1" >
+  <p style="text-align:center; margin-top:20px;">Olá, pessoal! Eu me chamo Cindy e esta é a minha coleção pessoal de wallpapers.
+Gosto de criar designs para me expressar, relaxar e colocar um pouco da minha personalidade nas coisinhas que uso no dia a dia.
+Espero que gostem e que encontrem algo que combine com vocês também! ࿐ ࿔*</p>
+</div>
+
+  <section class="gallery"></section>
+
+  <footer>
+    © 2025 — Meu Acervo
+  </footer>
+
+  <script>
+    // Lê automaticamente as imagens listadas no JSON
+    async function carregarWallpapers() {
+      try {
+        const response = await fetch('wallpapers/lista.json');
+        const lista = await response.json();
+        const galeria = document.querySelector('.gallery');
+
+        lista.forEach(caminho => {
+          const div = document.createElement('div');
+          div.classList.add('item');
+
+          const img = document.createElement('img');
+          img.src = caminho;
+          img.alt = "Wallpaper";
+
+          div.appendChild(img);
+          galeria.appendChild(div);
+        });
+      } catch (e) {
+        console.error('Erro ao carregar imagens:', e);
+      }
+    }
+
+    carregarWallpapers();
+  </script>
+</body>
+</html>
